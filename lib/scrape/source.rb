@@ -43,27 +43,27 @@ class HtmlScrap
   @logger = Logger.new(file)
   @logger.info("SCRAP"){DateTime.now.to_s + "---------------------"}
 
+  @count = 0
+  @total = 0
+  @failed = 0
+
   command_line
-  
-  # Initialize URL
-   url = "http://billbharo.com/milaap/checkorders.php?fromdate=#{@from_date}&todate=#{@to_date}&Submit=Search+Orders#"
-  @html_doc = Nokogiri::HTML(open(url))
  end
 
 # Check for command line arguments if found
  def command_line
-  if ARGV.empty?
+  if (ENV["FROMDATE"].nil? | ENV["TODATE"].nil?)
    @from_date = Dbconn.getFromDate
    @to_date = Dbconn.getToDate
 
-   msg = "No command line arguments found, Using Database Dates"
+   msg = "No Environment Variables found, Using Database Dates"
    @logger.info("SCRAP"){msg}
    puts msg
   else
-   @from_date = Date.parse(ARGV[0])
-   @to_date = Date.parse(ARGV[1])
+   @from_date = Date.parse(ENV["FROMDATE"])
+   @to_date = Date.parse(ENV["TODATE"])
 
-   msg = "Using Command Line Arguments FROM DATE :: #{ARGV[0]} TO DATE #{ARGV[1]}"
+   msg = "Using Command Line Arguments FROM DATE :: #{@from_date} TO DATE #{@to_date}"
    @logger.info("SCRAP"){msg}
    puts msg
   end
@@ -71,11 +71,12 @@ class HtmlScrap
 
 # Process url using nokogiri and enter data into database
 def process_data
-  count = 0
-  total = 0
-  failed = 0
+  # Prepare URL & Nokogiri HTML
+  url = "http://billbharo.com/milaap/checkorders.php?fromdate=#{@from_date}&todate=#{@to_date}&Submit=Search+Orders#"
+  html_doc = Nokogiri::HTML(open(url))
 
-  @html_doc.xpath("//html/body/table/tr").each do |node|
+
+  html_doc.xpath("//html/body/table/tr").each do |node|
    arr = []
 
    node.css("td").each do |row|
@@ -99,17 +100,17 @@ def process_data
    scr.cust_phone = arr[11]
    scr.cust_addr = arr[12]
 
-   total = total + 1
+  @total = @total + 1
    begin
     if scr.save
-     count = count + 1
+     @count = @count + 1
     end
    rescue  StandardError =>ex
      @logger.error ex.message
-     failed = failed + 1
+     @failed = @failed + 1
    end
   end
 
-  puts "Total Parsed :: #{total}, Total Saved :: #{count}, Failed :: #{failed}"
+  puts "Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"
  end
 end
