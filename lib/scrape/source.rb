@@ -20,15 +20,11 @@ end
 
 # Class for Storing Dates for a particular run (ActiveRecord)
 class RunDate < ActiveRecord::Base
-end
-
-# Class with static methods to get from date and to date
-class Dbconn
- def self.getFromDate
+ def self.f_date
   return RunDate.first.from_date
  end
 
- def self.getToDate
+ def self.t_date
   return RunDate.first.to_date
  end
 end
@@ -53,10 +49,10 @@ class HtmlScrap
 # Check for command line arguments if found
  def command_line
   if (ENV["FROMDATE"].nil? | ENV["TODATE"].nil?)
-   @from_date = Dbconn.getFromDate
-   @to_date = Dbconn.getToDate
+   @from_date = RunDate.f_date
+   @to_date = RunDate.t_date
 
-   msg = "No Environment Variables found, Using Database Dates"
+   msg = "No Environment Variables found, Using Database Dates FROM DATE :: #{@from_date} TO DATE #{@to_date}"
    @logger.info("SCRAP"){msg}
    puts msg
   else
