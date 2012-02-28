@@ -27,6 +27,25 @@ class RunDate < ActiveRecord::Base
  def self.t_date
   return RunDate.first.to_date
  end
+
+ def self.save_date(f_date,t_date)
+  if RunDate.exists?
+   dt = RunDate.first
+   dt.to_date = t_date
+  else
+   dt = RunDate.new
+   dt.from_date = f_date
+   dt.to_date = t_date
+  end 
+ 
+
+  begin
+   dt.save
+   puts "Dates Saved to database for next Run"
+  rescue StandardError => ex
+   puts "Saving Date Failed"
+  end
+ end
 end
 
 # Class for HTML Scrap Data
@@ -49,16 +68,28 @@ class HtmlScrap
 # Check for command line arguments if found
  def command_line
   if (ENV["FROMDATE"].nil? | ENV["TODATE"].nil?)
-   @from_date = RunDate.f_date
-   @to_date = RunDate.t_date
 
-   msg = "No Environment Variables found, Using Database Dates FROM DATE :: #{@from_date} TO DATE #{@to_date}"
+   if RunDate.exists?
+    @from_date = RunDate.t_date
+    @to_date = Date.today
+    msg = "No Environment Variables found, Using Database Dates FROM DATE :: #{@from_date} TO DATE #{@to_date}"
+   else
+    msg ="Input Error. No Entry in database found"
+    puts msg
+    exit
+   end
    @logger.info("SCRAP"){msg}
    puts msg
   else
-   @from_date = Date.parse(ENV["FROMDATE"])
-   @to_date = Date.parse(ENV["TODATE"])
-
+   # Checking Date for input format 
+   begin
+    @from_date = Date.parse(ENV["FROMDATE"])
+    @to_date = Date.parse(ENV["TODATE"])
+   rescue StandardError => ex
+    @logger.error ex.message
+    puts "Invalid Format (DATE)"
+    exit
+   end
    msg = "Using Command Line Arguments FROM DATE :: #{@from_date} TO DATE #{@to_date}"
    @logger.info("SCRAP"){msg}
    puts msg
@@ -106,7 +137,8 @@ def process_data
      @failed = @failed + 1
    end
   end
-
+  # Save/Update Dates in Database
+  RunDate.save_date(@from_date,@to_date)
   puts "Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"
  end
 end
