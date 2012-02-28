@@ -48,6 +48,11 @@ class RunDate < ActiveRecord::Base
  end
 end
 
+# Class for detail match
+
+
+
+
 # Class for HTML Scrap Data
 
 class HtmlScrap

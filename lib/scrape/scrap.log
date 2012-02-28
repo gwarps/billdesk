@@ -88,3 +88,6 @@ E, [2012-02-28T14:58:42.005507 #4680] ERROR -- : Mysql::Error: Duplicate entry '
 E, [2012-02-28T14:58:42.008558 #4680] ERROR -- : Mysql::Error: Duplicate entry '1324404129942' for key 'PRIMARY': INSERT INTO `scraps` (`borrower_id`, `borrower_name`, `created_at`, `cust_addr`, `cust_email`, `cust_name`, `cust_phone`, `mil_tx_id`, `order_amt`, `order_date`, `order_desc`, `order_id`, `order_status`, `payment_mode`, `updated_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 I, [2012-02-28T14:59:57.604706 #4707]  INFO -- SCRAP: 2012-02-28T14:59:57+05:30---------------------
 I, [2012-02-28T14:59:57.682050 #4707]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2011-12-21 TO DATE 2012-02-28
+I, [2012-02-28T17:02:36.076580 #7858]  INFO -- SCRAP: 2012-02-28T17:02:36+05:30---------------------
+I, [2012-02-28T17:02:56.474263 #7862]  INFO -- SCRAP: 2012-02-28T17:02:56+05:30---------------------
+I, [2012-02-28T17:02:56.476903 #7862]  INFO -- SCRAP: Using Command Line Arguments FROM DATE :: 2011-12-01 TO DATE 2011-12-21
