@@ -16,6 +16,16 @@ ActiveRecord::Base.establish_connection(
 # Class for Scraps ActiveRecord
 class Scrap < ActiveRecord::Base
  self.primary_key = "order_id"
+
+# For comparing change with previous record
+ def self.match(scr)
+  rec = Scrap.find(scr.order_id)
+  if (scr.order_status==rec.order_status && scr.order_desc==rec.order_desc)
+   return true
+  else
+   return false 
+  end
+ end
 end
 
 # Class for Storing Dates for a particular run (ActiveRecord)
@@ -50,7 +60,9 @@ end
 
 # Class for detail match
 
-
+class DetailMatch < ActiveRecord::Base
+ belongs_to :scrap,:class_name=>"Scrap",:foreign_key=>"order_id"
+end
 
 
 # Class for HTML Scrap Data
@@ -66,6 +78,7 @@ class HtmlScrap
   @count = 0
   @total = 0
   @failed = 0
+  @conflict=0
 
   command_line
  end
@@ -104,6 +117,7 @@ class HtmlScrap
 # Process url using nokogiri and enter data into database
 def process_data
   # Prepare URL & Nokogiri HTML
+  #url = "http://localhost/milaap/check.html"
   url = "http://billbharo.com/milaap/checkorders.php?fromdate=#{@from_date}&todate=#{@to_date}&Submit=Search+Orders#"
   html_doc = Nokogiri::HTML(open(url))
 
@@ -140,10 +154,30 @@ def process_data
    rescue  StandardError =>ex
      @logger.error ex.message
      @failed = @failed + 1
+    
+    # Check for data change 
+     if not Scrap.match(scr)
+      @conflict = @conflict + 1
+       dm = ""
+      if DetailMatch.find_by_order_id(scr.order_id).nil?
+       dm = DetailMatch.new
+      else
+       dm = DetailMatch.find_by_order_id(scr.order_id)
+      end
+       dm.order_id = scr.order_id
+       dm.order_status = scr.order_status
+
+      begin
+       dm.save
+      rescue StandardError =>ex
+       @logger.error ex.message
+      end
+     end
    end
   end
   # Save/Update Dates in Database
   RunDate.save_date(@from_date,@to_date)
   puts "Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"
+  puts "Change Db Entered/Altered :: #{@conflict}"
  end
 end
