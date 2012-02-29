@@ -117,7 +117,7 @@ class HtmlScrap
 # Process url using nokogiri and enter data into database
 def process_data
   # Prepare URL & Nokogiri HTML
-  #url = "http://localhost/milaap/check.html"
+  #url = "http://localhost/milaap/check.html" ( For Testing )
   url = "http://billbharo.com/milaap/checkorders.php?fromdate=#{@from_date}&todate=#{@to_date}&Submit=Search+Orders#"
   html_doc = Nokogiri::HTML(open(url))
 
