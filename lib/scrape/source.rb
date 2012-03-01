@@ -58,6 +58,9 @@ class RunDate < ActiveRecord::Base
  end
 end
 
+# Class for Transactions
+class Transaction < ActiveRecord::Base 
+end
 # Class for detail match
 
 class DetailMatch < ActiveRecord::Base
@@ -113,11 +116,19 @@ class HtmlScrap
    puts msg
   end
  end
-
+# Return status string
+def status_string(scr)
+ if Transaction.exists?(scr.mil_tx_id)
+   status = scr.order_status[0,1].upcase + Transaction.find(scr.mil_tx_id).status[0,1].upcase 
+   return status
+ else 
+   return "NT"
+ end 
+end
 # Process url using nokogiri and enter data into database
 def process_data
   # Prepare URL & Nokogiri HTML
-  #url = "http://localhost/milaap/check.html" ( For Testing )
+  #url = "http://localhost/milaap/check.html" #( For Testing Swap URL but specify ENV FROMDATE TODATE)
   url = "http://billbharo.com/milaap/checkorders.php?fromdate=#{@from_date}&todate=#{@to_date}&Submit=Search+Orders#"
   html_doc = Nokogiri::HTML(open(url))
 
@@ -145,7 +156,7 @@ def process_data
    scr.cust_email = arr[10]
    scr.cust_phone = arr[11]
    scr.cust_addr = arr[12]
-
+   scr.tag = status_string(scr)
   @total = @total + 1
    begin
     if scr.save
