@@ -74,7 +74,9 @@ class HtmlScrap
 
  def initialize
   # Initialize Logger
-  file = File.open("scrap.log", File::WRONLY | File::APPEND | File::CREAT)
+  log_file_path = File.expand_path(File.join(File.dirname(__FILE__),"scrap.log"))
+  
+  file = File.open(log_file_path, File::WRONLY | File::APPEND | File::CREAT)
   @logger = Logger.new(file)
   @logger.info("SCRAP"){DateTime.now.to_s + "---------------------"}
 
@@ -142,24 +144,24 @@ def process_data
 
    next if(arr[0] == "Order ID")
 
-   scr = Scrap.new
-   scr.order_id = arr[0]
-   scr.order_date = DateTime.parse(arr[1])
-   scr.order_amt = arr[2].to_f
-   scr.order_status = arr[3]
-   scr.payment_mode = arr[4]
-   scr.mil_tx_id = arr[5]
-   scr.order_desc = arr[6]
-   scr.borrower_id = arr[7].to_i
-   scr.borrower_name = arr[8]
-   scr.cust_name = arr[9]
-   scr.cust_email = arr[10]
-   scr.cust_phone = arr[11]
-   scr.cust_addr = arr[12]
-   scr.tag = status_string(scr)
+   scrap = Scrap.new
+   scrap.order_id = arr[0]
+   scrap.order_date = DateTime.parse(arr[1])
+   scrap.order_amt = arr[2].to_f
+   scrap.order_status = arr[3]
+   scrap.payment_mode = arr[4]
+   scrap.mil_tx_id = arr[5]
+   scrap.order_desc = arr[6]
+   scrap.borrower_id = arr[7].to_i
+   scrap.borrower_name = arr[8]
+   scrap.cust_name = arr[9]
+   scrap.cust_email = arr[10]
+   scrap.cust_phone = arr[11]
+   scrap.cust_addr = arr[12]
+   scrap.tag = status_string(scrap)
   @total = @total + 1
    begin
-    if scr.save
+    if scrap.save
      @count = @count + 1
     end
    rescue  StandardError =>ex
@@ -167,19 +169,19 @@ def process_data
      @failed = @failed + 1
     
     # Check for data change 
-     if not Scrap.match(scr)
+     if not Scrap.match(scrap)
       @conflict = @conflict + 1
-       dm = ""
+       detail_match = ""
       if DetailMatch.find_by_order_id(scr.order_id).nil?
-       dm = DetailMatch.new
+       detail_match = DetailMatch.new
       else
-       dm = DetailMatch.find_by_order_id(scr.order_id)
+       detail_match = DetailMatch.find_by_order_id(scr.order_id)
       end
-       dm.order_id = scr.order_id
-       dm.order_status = scr.order_status
+       detail_match.order_id = scrap.order_id
+       detail_match.order_status = scrap.order_status
 
       begin
-       dm.save
+       detail_match.save
       rescue StandardError =>ex
        @logger.error ex.message
       end
@@ -188,7 +190,9 @@ def process_data
   end
   # Save/Update Dates in Database
   RunDate.save_date(@from_date,@to_date)
-  puts "Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"
-  puts "Change Db Entered/Altered :: #{@conflict}"
+  #puts "Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"
+  #puts "Change Db Entered/Altered :: #{@conflict}"
+  @logger.info("PARSE RESULT"){"Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"}
+  @logger.info("Change Data RESULT"){"Change Db Entered/Altered :: #{@conflict}\n\n"}
  end
 end
