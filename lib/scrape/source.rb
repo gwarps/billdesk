@@ -190,8 +190,8 @@ def process_data
   end
   # Save/Update Dates in Database
   RunDate.save_date(@from_date,@to_date)
-  #puts "Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"
-  #puts "Change Db Entered/Altered :: #{@conflict}"
+  puts "Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"
+  puts "Change Db Entered/Altered :: #{@conflict}"
   @logger.info("PARSE RESULT"){"Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"}
   @logger.info("Change Data RESULT"){"Change Db Entered/Altered :: #{@conflict}\n\n"}
  end
