@@ -180,3 +180,165 @@ I, [2012-03-07T14:47:06.079952 #9019]  INFO -- PARSE RESULT: Total Parsed :: 0, 
 I, [2012-03-07T14:47:06.080082 #9019]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
 
 
+I, [2012-03-07T14:48:05.229372 #9107]  INFO -- SCRAP: 2012-03-07T14:48:05+05:30---------------------
+I, [2012-03-07T14:48:05.284685 #9107]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:48:05.906943 #9107]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:48:05.907021 #9107]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:49:06.026821 #9220]  INFO -- SCRAP: 2012-03-07T14:49:06+05:30---------------------
+I, [2012-03-07T14:49:06.085093 #9220]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:49:07.153378 #9220]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:49:07.153512 #9220]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:50:05.337984 #9310]  INFO -- SCRAP: 2012-03-07T14:50:05+05:30---------------------
+I, [2012-03-07T14:50:05.399631 #9310]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:50:06.059632 #9310]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:50:06.059788 #9310]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:51:05.173137 #9377]  INFO -- SCRAP: 2012-03-07T14:51:05+05:30---------------------
+I, [2012-03-07T14:51:05.227990 #9377]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:51:07.158586 #9377]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:51:07.158757 #9377]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:52:05.251344 #9476]  INFO -- SCRAP: 2012-03-07T14:52:05+05:30---------------------
+I, [2012-03-07T14:52:05.312553 #9476]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:52:07.057932 #9476]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:52:07.058066 #9476]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:53:05.191864 #9534]  INFO -- SCRAP: 2012-03-07T14:53:05+05:30---------------------
+I, [2012-03-07T14:53:05.253598 #9534]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:53:05.895586 #9534]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:53:05.895661 #9534]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:54:06.133991 #9581]  INFO -- SCRAP: 2012-03-07T14:54:06+05:30---------------------
+I, [2012-03-07T14:54:06.194244 #9581]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:54:07.196473 #9581]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:54:07.196606 #9581]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:55:05.301860 #9705]  INFO -- SCRAP: 2012-03-07T14:55:05+05:30---------------------
+I, [2012-03-07T14:55:05.362295 #9705]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:55:06.432871 #9705]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:55:06.432946 #9705]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:56:05.967740 #9761]  INFO -- SCRAP: 2012-03-07T14:56:05+05:30---------------------
+I, [2012-03-07T14:56:06.025839 #9761]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:56:07.670308 #9761]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:56:07.670441 #9761]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:57:06.107460 #9816]  INFO -- SCRAP: 2012-03-07T14:57:06+05:30---------------------
+I, [2012-03-07T14:57:06.162303 #9816]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:57:07.417614 #9816]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:57:07.417761 #9816]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:58:05.499448 #9874]  INFO -- SCRAP: 2012-03-07T14:58:05+05:30---------------------
+I, [2012-03-07T14:58:05.560477 #9874]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:58:06.296108 #9874]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:58:06.296241 #9874]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T14:59:05.707708 #9972]  INFO -- SCRAP: 2012-03-07T14:59:05+05:30---------------------
+I, [2012-03-07T14:59:05.773700 #9972]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T14:59:06.927814 #9972]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T14:59:06.927950 #9972]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:00:06.369109 #10102]  INFO -- SCRAP: 2012-03-07T15:00:06+05:30---------------------
+I, [2012-03-07T15:00:06.433457 #10102]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:00:06.953011 #10102]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:00:06.953141 #10102]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:01:06.341428 #10193]  INFO -- SCRAP: 2012-03-07T15:01:06+05:30---------------------
+I, [2012-03-07T15:01:06.404080 #10193]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:01:07.077974 #10193]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:01:07.078061 #10193]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:02:05.582181 #10259]  INFO -- SCRAP: 2012-03-07T15:02:05+05:30---------------------
+I, [2012-03-07T15:02:05.659827 #10259]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:02:06.281528 #10259]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:02:06.281661 #10259]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:03:05.722226 #10327]  INFO -- SCRAP: 2012-03-07T15:03:05+05:30---------------------
+I, [2012-03-07T15:03:05.780035 #10327]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:03:06.553276 #10327]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:03:06.553409 #10327]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:04:06.039983 #10359]  INFO -- SCRAP: 2012-03-07T15:04:06+05:30---------------------
+I, [2012-03-07T15:04:06.093703 #10359]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:04:06.907219 #10359]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:04:06.907349 #10359]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:05:06.486236 #10463]  INFO -- SCRAP: 2012-03-07T15:05:06+05:30---------------------
+I, [2012-03-07T15:05:06.542372 #10463]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:05:07.465766 #10463]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:05:07.465897 #10463]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:06:05.785667 #10548]  INFO -- SCRAP: 2012-03-07T15:06:05+05:30---------------------
+I, [2012-03-07T15:06:05.845009 #10548]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:06:06.472822 #10548]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:06:06.472961 #10548]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:07:05.772709 #10588]  INFO -- SCRAP: 2012-03-07T15:07:05+05:30---------------------
+I, [2012-03-07T15:07:05.832546 #10588]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:07:14.145204 #10588]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:07:14.145336 #10588]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:08:05.439466 #10678]  INFO -- SCRAP: 2012-03-07T15:08:05+05:30---------------------
+I, [2012-03-07T15:08:05.501730 #10678]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:08:06.262488 #10678]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:08:06.262623 #10678]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:09:05.488726 #10761]  INFO -- SCRAP: 2012-03-07T15:09:05+05:30---------------------
+I, [2012-03-07T15:09:05.546933 #10761]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:09:06.228403 #10761]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:09:06.228570 #10761]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:10:05.405875 #10945]  INFO -- SCRAP: 2012-03-07T15:10:05+05:30---------------------
+I, [2012-03-07T15:10:05.463172 #10945]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:10:06.334598 #10945]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:10:06.334672 #10945]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:11:05.485405 #10990]  INFO -- SCRAP: 2012-03-07T15:11:05+05:30---------------------
+I, [2012-03-07T15:11:05.545156 #10990]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:11:06.278079 #10990]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:11:06.278208 #10990]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:12:05.586082 #11062]  INFO -- SCRAP: 2012-03-07T15:12:05+05:30---------------------
+I, [2012-03-07T15:12:05.651235 #11062]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:12:07.723046 #11062]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:12:07.723122 #11062]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:13:05.954599 #11195]  INFO -- SCRAP: 2012-03-07T15:13:05+05:30---------------------
+I, [2012-03-07T15:13:06.038613 #11195]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:13:07.038658 #11195]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:13:07.038810 #11195]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
+I, [2012-03-07T15:14:05.258565 #11243]  INFO -- SCRAP: 2012-03-07T15:14:05+05:30---------------------
+I, [2012-03-07T15:14:05.316235 #11243]  INFO -- SCRAP: No Environment Variables found, Using Database Dates FROM DATE :: 2012-03-07 TO DATE 2012-03-07
+I, [2012-03-07T15:14:06.005400 #11243]  INFO -- PARSE RESULT: Total Parsed :: 0, Total Saved :: 0, Failed :: 0
+I, [2012-03-07T15:14:06.005530 #11243]  INFO -- Change Data RESULT: Change Db Entered/Altered :: 0
+
+
