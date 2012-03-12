@@ -6,15 +6,27 @@ require "logger"
 
 # ----------------
 
-ActiveRecord::Base.establish_connection(
+ActiveRecord::Base.configurations["scrap_db"] ={
 :adapter=>"mysql",
 :host=>"localhost",
 :username=>"root",
 :password=>"puneet123",
-:database=>"html-scrap_development")
+:database=>"html-scrap_development"
+}
+
+ActiveRecord::Base.configurations["auth_db"] = {
+ :adapter=>"mysql",
+ :host=>"milaap.org",
+ :username=>"readonly",
+ :password=>"strawberry-slurp-101@milaap",
+ :database=>"auth_production"
+}
+
+
 
 # Class for Scraps ActiveRecord
 class Scrap < ActiveRecord::Base
+ establish_connection :scrap_db
  self.primary_key = "order_id"
 
 # For comparing change with previous record
@@ -30,6 +42,7 @@ end
 
 # Class for Storing Dates for a particular run (ActiveRecord)
 class RunDate < ActiveRecord::Base
+ establish_connection :scrap_db
  def self.f_date
   return RunDate.first.from_date
  end
@@ -60,6 +73,7 @@ end
 
 # Class for Transactions
 class Transaction < ActiveRecord::Base 
+ establish_connection :auth_db
 end
 # Class for detail match
 
