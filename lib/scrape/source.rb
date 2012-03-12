@@ -54,7 +54,13 @@ class RunDate < ActiveRecord::Base
  def self.save_date(f_date,t_date)
   if RunDate.exists?
    dt = RunDate.first
-   dt.to_date = t_date
+   if f_date < dt.from_date
+     dt.from_date = f_date
+   end
+
+   if t_date > dt.to_date
+     dt.to_date = t_date
+   end
   else
    dt = RunDate.new
    dt.from_date = f_date
@@ -122,9 +128,14 @@ class HtmlScrap
    begin
     @from_date = Date.parse(ENV["FROMDATE"])
     @to_date = Date.parse(ENV["TODATE"])
+
+    if @from_date > @to_date
+     raise StandardError,"Date Range is Invalid"
+    end
    rescue StandardError => ex
     @logger.error ex.message
     puts "Invalid Format (DATE)"
+    puts ex.message
     exit
    end
    msg = "Using Command Line Arguments FROM DATE :: #{@from_date} TO DATE #{@to_date}"
