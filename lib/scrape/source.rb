@@ -126,15 +126,14 @@ class HtmlScrap
   else
    # Checking Date for input format 
    begin
-    @from_date = Date.parse(ENV["FROMDATE"])
-    @to_date = Date.parse(ENV["TODATE"])
+    @from_date = Date.strptime(ENV["FROMDATE"],"%Y/%m/%d")
+    @to_date = Date.strptime(ENV["TODATE"],"%Y/%m/%d")
 
     if @from_date > @to_date
      raise StandardError,"Date Range is Invalid"
     end
    rescue StandardError => ex
     @logger.error ex.message
-    puts "Invalid Format (DATE)"
     puts ex.message
     exit
    end
