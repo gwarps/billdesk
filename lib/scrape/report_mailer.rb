@@ -1,5 +1,4 @@
 require "action_mailer"
-require "date"
 
 ActionMailer::Base.raise_delivery_errors = true
 ActionMailer::Base.delivery_method = :smtp
@@ -12,7 +11,8 @@ ActionMailer::Base.smtp_settings = {
  :authentication => "plain",
  :enable_starttls_auto => true 
 }
-
+ActionMailer::Base.raise_delivery_errors = false
+ActionMailer::Base.perform_deliveries = true
 ActionMailer::Base.view_paths = File.dirname(__FILE__)
 
 class UserMailer < ActionMailer::Base
@@ -30,9 +30,14 @@ class UserMailer < ActionMailer::Base
   if (to_date-from_date) ==  6
    @sub = "Billbharo::Status check for last 7 days"
   end
-
-  mail(:to => "puneet.mir@gmail.com",:subject => @sub) do |format|
-   format.html
+  begin
+   mail(:to => "puneet.mir@gmail.com",:subject => @sub) do |format|
+    format.html
+   end
+  rescue StandardError => ex
+   puts ex.message
   end
  end
 end
+
+

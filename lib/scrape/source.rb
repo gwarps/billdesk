@@ -3,7 +3,7 @@ require "nokogiri"
 require "date"
 require "open-uri"
 require "logger"
-
+require_relative "./report_mailer.rb"
 # ----------------
 
 ActiveRecord::Base.configurations["scrap_db"] ={
@@ -214,9 +214,13 @@ def process_data
   end
   # Save/Update Dates in Database
   RunDate.save_date(@from_date,@to_date)
+
   puts "Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"
   puts "Change Db Entered/Altered :: #{@conflict}"
+
   @logger.info("PARSE RESULT"){"Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"}
   @logger.info("Change Data RESULT"){"Change Db Entered/Altered :: #{@conflict}\n\n"}
+
+  UserMailer.send_mail(@from_date,@to_date,@total,@count,@failed,@conflict).deliver
  end
 end
