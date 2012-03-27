@@ -18,6 +18,8 @@ ActionMailer::Base.view_paths = File.dirname(__FILE__)
 class UserMailer < ActionMailer::Base
  default from: "puneet@milaap.org"
 
+ # For sending regular update mails
+
  def send_mail(from_date,to_date,total,saved,failed,conflict)
   @sub = "Billbharo Summary Report"
   @f_date =  from_date
@@ -32,6 +34,18 @@ class UserMailer < ActionMailer::Base
   end
   begin
    mail(:to => "puneet.mir@gmail.com",:subject => @sub) do |format|
+    format.html
+   end
+  rescue StandardError => ex
+   puts ex.message
+  end
+ end
+
+ # For sending exceptional message due to some reasons
+ def  exception_mail(message)
+  @msg = message
+  begin
+   mail(:to => "puneet.mir@gmail.com",:subject => "SCRIPT FAILED") do |format|
     format.html
    end
   rescue StandardError => ex
