@@ -156,7 +156,7 @@ def process_data
   # Prepare URL & Nokogiri HTML
   #url = "http://localhost/milaap/check.html" #( For Testing Swap URL but specify ENV FROMDATE TODATE)
   url = "http://billbharo.com/milaap/checkorders.php?fromdate=#{@from_date}&todate=#{@to_date}&Submit=Search+Orders#"
-  html_doc = Nokogiri::HTML(open(url))
+  html_doc = Nokogiri::HTML(open(url,"User-Agent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11"))
 
 
   html_doc.xpath("//html/body/table/tr").each do |node|
