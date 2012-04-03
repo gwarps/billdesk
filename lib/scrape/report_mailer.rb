@@ -52,6 +52,22 @@ class UserMailer < ActionMailer::Base
    puts ex.message
   end
  end
+
+ def dropout_mail(scrap,from_date,to_date,total,dropcount)
+  @scrap = scrap
+  @f_date =  from_date
+  @t_date = to_date
+  @total = total
+  @dropcount = dropcount 
+  
+  begin
+   mail(:to => "puneet.mir@gmail.com",:subject => "BillBharo::Dropout Transaction") do |format|
+    format.html
+   end 
+  rescue StandardError => ex
+   puts ex.message
+  end
+ end
 end
 
 

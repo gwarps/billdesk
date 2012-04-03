@@ -1,0 +1,40 @@
+ <div style="background-color:#ccc">
+  <h2 style="color:red;">Transaction Dropout</h2>
+   <div style="padding:20px">
+    <h3>Details</h3>
+    <div>
+     <table>
+	<tr>
+         <td>Start Date:</td>
+	 <td><%= @f_date%></td>
+        </tr>
+
+	<tr>
+	 <td>End Date:</td>
+	 <td><%= @t_date%></td>
+	</tr>
+	
+        <tr>
+         <td>Total No. of Records Parsed from billbharo:</td>
+         <td><%= @total%></td>
+        </tr>
+        
+        <tr>
+         <td>Total No. of dropouts:</td>		
+         <td><%= @dropcount%></td>	
+      </table>
+     </div>
+     <h3>Dropout Transaction Summary</h3>
+     <p>Order ID: <%= @scrap.order_id %></p>
+     <p>Order Amount: <%= @scrap.order_amt %></p>
+     <p>Payment Mode: <%= @scrap.payment_mode %></p>
+     <p>Customer Name: <%= @scrap.cust_name %></p>
+     <p>Customer Phone: <%= @scrap.cust_phone %></p>
+     <p>Customer Address: <%= @scrap.cust_addr %></p>
+     <p><a href="http://billbharo.com/milaap/checkorders.php?fromdate=<%= @f_date%>&todate=<%= @t_date%>&Submit=Search+Orders#">Details</a></p>
+    </div>
+    <p>
+     ENV MODE::<%= ENV["MODE"]%>
+    </p>
+
+</div>

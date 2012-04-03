@@ -103,7 +103,9 @@ class HtmlScrap
   @count = 0
   @total = 0
   @failed = 0
-  @conflict=0
+  @conflict = 0
+  @dropcount = 0
+  @found = 0
 
   command_line
  end
@@ -183,6 +185,17 @@ def process_data
    scrap.cust_phone = arr[11]
    scrap.cust_addr = arr[12]
    scrap.tag = status_string(scrap)
+
+   # Checking for existing
+   if Scrap.exists?(scrap.order_id)
+    @found = @found + 1
+   end
+   
+   # Checking for Dropouts
+   if scrap.order_status == "Dropout"
+    @dropcount = @dropcount + 1
+   end
+ 
   @total = @total + 1
    begin
     if scrap.save
@@ -211,6 +224,7 @@ def process_data
       end
      end
    end
+  UserMailer.dropout_mail(scrap,@from_date,@to_date,@total,@dropcount).deliver if ENV["MODE"]=="DROPOUT" if (scrap.order_status=="Dropout")
   end
   # Save/Update Dates in Database
   RunDate.save_date(@from_date,@to_date)
@@ -220,7 +234,7 @@ def process_data
 
   @logger.info("PARSE RESULT"){"Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"}
   @logger.info("Change Data RESULT"){"Change Db Entered/Altered :: #{@conflict}\n\n"}
-
-  UserMailer.send_mail(@from_date,@to_date,@total,@count,@failed,@conflict).deliver
+  
+  UserMailer.send_mail(@from_date,@to_date,@total,@count,@failed,@conflict).deliver if ENV["MODE"]=="NORMAL"
  end
 end
