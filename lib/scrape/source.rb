@@ -98,7 +98,7 @@ class HtmlScrap
   
   file = File.open(log_file_path, File::WRONLY | File::APPEND | File::CREAT)
   @logger = Logger.new(file)
-  @logger.info("SCRAP"){DateTime.now.to_s + "---------------------"}
+  @logger.info("SCRAP"){DateTime.now.to_s + "---------------------#{ENV["MODE"]}"}
 
   @count = 0
   @total = 0
