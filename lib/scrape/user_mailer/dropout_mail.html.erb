@@ -5,32 +5,32 @@
     <div>
      <table>
 	<tr>
-         <td>Start Date:</td>
+         <td><b>Start Date:</b></td>
 	 <td><%= @f_date%></td>
         </tr>
 
 	<tr>
-	 <td>End Date:</td>
+	 <td><b>End Date:</b></td>
 	 <td><%= @t_date%></td>
 	</tr>
 	
         <tr>
-         <td>Total No. of Records Parsed from billbharo:</td>
+         <td><b>Total No. of Records Parsed from billbharo:</b></td>
          <td><%= @total%></td>
         </tr>
         
         <tr>
-         <td>Total No. of dropouts:</td>		
+         <td><b>Total No. of dropouts:</b></td>		
          <td><%= @dropcount%></td>	
       </table>
      </div>
      <h3>Dropout Transaction Summary</h3>
-     <p>Order ID: <%= @scrap.order_id %></p>
-     <p>Order Amount: <%= @scrap.order_amt %></p>
-     <p>Payment Mode: <%= @scrap.payment_mode %></p>
-     <p>Customer Name: <%= @scrap.cust_name %></p>
-     <p>Customer Phone: <%= @scrap.cust_phone %></p>
-     <p>Customer Address: <%= @scrap.cust_addr %></p>
+     <p><b>Order ID: </b><%= @scrap.order_id %></p>
+     <p><b>Order Amount:</b> <%= @scrap.order_amt %></p>
+     <p><b>Payment Mode:</b> <%= @scrap.payment_mode %></p>
+     <p><b>Customer Name:</b> <%= @scrap.cust_name %></p>
+     <p><b>Customer Phone:</b> <%= @scrap.cust_phone %></p>
+     <p><b>Customer Address:</b> <%= @scrap.cust_addr %></p>
      <p><a href="http://billbharo.com/milaap/checkorders.php?fromdate=<%= @f_date%>&todate=<%= @t_date%>&Submit=Search+Orders#">Details</a></p>
     </div>
     <p>

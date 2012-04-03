@@ -185,7 +185,7 @@ def process_data
    scrap.cust_phone = arr[11]
    scrap.cust_addr = arr[12]
    scrap.tag = status_string(scrap)
-
+   scrap.drop_count=0
    # Checking for existing
    if Scrap.exists?(scrap.order_id)
     @found = @found + 1
@@ -224,7 +224,12 @@ def process_data
       end
      end
    end
-  UserMailer.dropout_mail(scrap,@from_date,@to_date,@total,@dropcount).deliver if ENV["MODE"]=="DROPOUT" if (scrap.order_status=="Dropout")
+   # Sending dropout mail and updating the tag
+   temp_scr = Scrap.find(scrap.order_id)
+   if ((temp_scr.order_status=="Dropout")&&(ENV["MODE"]=="DROPOUT")&&(temp_scr.drop_count==0))
+    UserMailer.dropout_mail(scrap,@from_date,@to_date,@total,@dropcount).deliver 
+    temp_scr.update_attributes(:drop_count=>1)
+   end
   end
   # Save/Update Dates in Database
   RunDate.save_date(@from_date,@to_date)
