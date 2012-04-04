@@ -1,6 +1,0 @@
-Order ID,Order Date,Order Amount,Order Status,Payment Mode,Mil Tx ID,Order Desc,Borrower ID,Borrower Name,Customer Name,Customer Email,Customer Phone,Customer Address,Status Tag
-1324299922435,2011-12-19T06:05:31+00:00,50.0,Dropout,nb,asdf3434,testv.01,250,Milaap Loan,Test User,testuser@gmail.com,9234894534,"Ashok Towers ,Lower Parel ,Mumbai - 400011 ,Maharashtra ,India",NT
-1324556010455,2011-12-22T05:14:05+00:00,315.0,Dropout,nb,1687,1,282,Soniya G Subramani,Deepak Kannan,kannan.deepak@gmail.com,please fill phone,"iim bangalore , ,bangalore - 20056 ,karnataka ,india",DP
-1324568702383,2011-12-22T08:45:06+00:00,50.0,Dropout,nb,1698,1,282,Soniya G Subramani,Deepak Kannan,kannan.deepak@gmail.com,please fill phone,"please fill address , ,which city - zipcode ,state ,india",DP
-1324710685745,2011-12-24T00:11:57+00:00,50.0,Dropout,nb,asdf3434,testv.01,250,Milaap Loan,Test User,testuser@gmail.com,9234894534,"Ashok Towers ,Lower Parel ,Mumbai - 400011 ,Maharashtra ,India",NT
-1324735340406,2011-12-24T07:02:24+00:00,52.5,Dropout,nb,1733,1,273,Poulin Rose,Deepak Kannan,kannan.deepak@gmail.com,please fill phone,"please fill address , ,which city - zipcode ,state ,india",DP
