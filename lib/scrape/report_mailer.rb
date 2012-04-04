@@ -35,10 +35,8 @@ class UserMailer < ActionMailer::Base
    @sub = "Billbharo::Status check for last 7 days"
   end
   begin
-   puts file_path
-   puts "==========="
    attachments['Dropouts.csv'] = File.read(file_path)
-   mail(:to => "puneet.mir@gmail.com",:subject => @sub) do |format|
+   mail(:to => "puneet.mir@gmail.com",:cc => ["nagendra@milaap.org","deepak@milaap.org"],:subject => @sub) do |format|
     format.html
    end
   rescue StandardError => ex
@@ -50,7 +48,7 @@ class UserMailer < ActionMailer::Base
  def  exception_mail(message)
   @msg = message
   begin
-   mail(:to => "puneet.mir@gmail.com",:subject => "SCRIPT FAILED") do |format|
+   mail(:to => "puneet.mir@gmail.com",:cc => ["nagendra@milaap.org","deepak@milaap.org"],:subject => "SCRIPT FAILED") do |format|
     format.html
    end
   rescue StandardError => ex
