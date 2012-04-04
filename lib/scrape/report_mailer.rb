@@ -20,7 +20,7 @@ class UserMailer < ActionMailer::Base
 
  # For sending regular update mails
 
- def send_mail(from_date,to_date,total,saved,failed,conflict)
+ def send_mail(from_date,to_date,total,saved,failed,conflict,dropcount,found,file_path)
   @sub = "Billbharo Summary Report"
   @f_date =  from_date
   @t_date = to_date
@@ -28,11 +28,16 @@ class UserMailer < ActionMailer::Base
   @saved = saved
   @failed = failed
   @conflict = conflict
+  @dropcount = dropcount
+  @found = found
 
   if (to_date-from_date) ==  6
    @sub = "Billbharo::Status check for last 7 days"
   end
   begin
+   puts file_path
+   puts "==========="
+   attachments['Dropouts.csv'] = File.read(file_path)
    mail(:to => "puneet.mir@gmail.com",:subject => @sub) do |format|
     format.html
    end

@@ -3,6 +3,7 @@ require "nokogiri"
 require "date"
 require "open-uri"
 require "logger"
+require "csv"
 require_relative "./report_mailer.rb"
 # ----------------
 
@@ -160,20 +161,29 @@ def process_data
   url = "http://billbharo.com/milaap/checkorders.php?fromdate=#{@from_date}&todate=#{@to_date}&Submit=Search+Orders#"
   html_doc = Nokogiri::HTML(open(url,"User-Agent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11"))
 
-
+  # Opening CSV if NORMAL Mode
+  # Path for sending csv as attachement to mail
+  drop_file_path = ""
+  if ENV["MODE"] == "NORMAL"
+   drop_file_path = File.expand_path("../dropouts_csv_log/dropout_#{Time.now.strftime('%d%m%Y')}.csv", __FILE__)
+   output = CSV.open(drop_file_path,'w')
+   output << ["Order ID","Order Date","Order Amount","Order Status","Payment Mode","Mil Tx ID","Order Desc","Borrower ID","Borrower Name","Customer Name","Customer Email","Customer Phone","Customer Address","Status Tag"]
+  end
+  
   html_doc.xpath("//html/body/table/tr").each do |node|
    arr = []
 
    node.css("td").each do |row|
     arr << row.inner_text.strip
    end
-
+   
+   
    next if(arr[0] == "Order ID")
 
    scrap = Scrap.new
    scrap.order_id = arr[0]
    scrap.order_date = DateTime.parse(arr[1])
-   scrap.order_amt = arr[2].to_f
+   scrap.order_amt = arr[2][/[0-9]*\.?[0-9]/].to_f
    scrap.order_status = arr[3]
    scrap.payment_mode = arr[4]
    scrap.mil_tx_id = arr[5]
@@ -194,6 +204,9 @@ def process_data
    # Checking for Dropouts
    if scrap.order_status == "Dropout"
     @dropcount = @dropcount + 1
+    if ENV["MODE"] == "NORMAL"
+     output << [scrap.order_id,scrap.order_date,scrap.order_amt,scrap.order_status,scrap.payment_mode,scrap.mil_tx_id,scrap.order_desc,scrap.borrower_id,scrap.borrower_name,scrap.cust_name,scrap.cust_email,scrap.cust_phone,scrap.cust_addr,scrap.tag] 
+    end
    end
  
   @total = @total + 1
@@ -227,8 +240,8 @@ def process_data
    # Sending dropout mail and updating the tag
    temp_scr = Scrap.find(scrap.order_id)
    if ((temp_scr.order_status=="Dropout")&&(ENV["MODE"]=="DROPOUT")&&(temp_scr.drop_count==0))
-    UserMailer.dropout_mail(scrap,@from_date,@to_date,@total,@dropcount).deliver 
-    temp_scr.update_attributes(:drop_count=>1)
+      UserMailer.dropout_mail(scrap,@from_date,@to_date,@total,@dropcount).deliver 
+      temp_scr.update_attributes(:drop_count=>1)
    end
   end
   # Save/Update Dates in Database
@@ -237,9 +250,9 @@ def process_data
   puts "Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"
   puts "Change Db Entered/Altered :: #{@conflict}"
 
+  output.close
   @logger.info("PARSE RESULT"){"Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"}
   @logger.info("Change Data RESULT"){"Change Db Entered/Altered :: #{@conflict}\n\n"}
-  
-  UserMailer.send_mail(@from_date,@to_date,@total,@count,@failed,@conflict).deliver if ENV["MODE"]=="NORMAL"
+  UserMailer.send_mail(@from_date,@to_date,@total,@count,@failed,@conflict,@dropcount,@found,drop_file_path).deliver if ENV["MODE"]=="NORMAL"
  end
 end

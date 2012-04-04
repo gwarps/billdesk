@@ -20,8 +20,12 @@
 # Learn more: http://github.com/javan/whenever
 # For Production and comment out the job below
 #every 1.day, :at => "18:30 pm" do
-# command "ruby /usr/local/current/html_scraping/lib/scrape/billdesk_mis.rb >> /usr/local/scrap_message.txt"
+# command "MODE=NORMAL ruby /usr/local/current/html_scraping/lib/scrape/billdesk_mis.rb >> /usr/local/scrap_message.txt"
 #end
+# For dropouts
+# every 30.minutes do
+# command "MODE=DROPOUT ruby /usr/local/current/html_scraping/lib/scrape/billdesk_mis.rb >> /usr/local/scrap_message.txt"
+# end
 every 1.minutes do
  command "ruby /home/puneet/programming/rails/billdesk-scrape/lib/scrape/billdesk_mis.rb >> /home/puneet/mesg.txt"
 end
