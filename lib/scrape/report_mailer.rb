@@ -35,8 +35,8 @@ class UserMailer < ActionMailer::Base
    @sub = "Billbharo::Status check for last 7 days"
   end
   begin
-   attachments['Dropouts.csv'] = File.read(file_path)
-   mail(:to => "puneet.mir@gmail.com",:cc => ["nagendra@milaap.org","deepak@milaap.org"],:subject => @sub) do |format|
+   attachments['Dropouts.csv'] = File.read(file_path) if @dropcount > 0
+   mail(:to => "puneet.mir@gmail.com",:subject => @sub) do |format|
     format.html
    end
   rescue StandardError => ex
@@ -48,7 +48,7 @@ class UserMailer < ActionMailer::Base
  def  exception_mail(message)
   @msg = message
   begin
-   mail(:to => "puneet.mir@gmail.com",:cc => ["nagendra@milaap.org","deepak@milaap.org"],:subject => "SCRIPT FAILED") do |format|
+   mail(:to => "puneet.mir@gmail.com",:subject => "SCRIPT FAILED") do |format|
     format.html
    end
   rescue StandardError => ex
@@ -67,6 +67,22 @@ class UserMailer < ActionMailer::Base
    mail(:to => "puneet.mir@gmail.com",:subject => "BillBharo::Dropout Transaction") do |format|
     format.html
    end 
+  rescue StandardError => ex
+   puts ex.message
+  end
+ end
+
+ def daily_mail(from_date,to_date,dropcount,status,file_path)
+  @f_date = from_date
+  @t_date = to_date
+  @dropcount = dropcount
+  @status = status
+  
+  attachments['Dropouts.csv'] = File.read(file_path)
+  begin
+   mail(:to => "puneet.mir@gmail.com",:subject => "Billbharo Dropout") do |format|
+    format.html
+   end
   rescue StandardError => ex
    puts ex.message
   end

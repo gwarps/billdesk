@@ -1,0 +1,3 @@
+Order ID,Order Date,Order Amount,Order Status,Payment Mode,Mil Tx ID,Order Desc,Borrower ID,Borrower Name,Customer Name,Customer Email,Customer Phone,Customer Address,Status Tag
+1333360358468,2012-04-02T15:23:35+00:00,2.0,Dropout,nb,2747,1,283,Vijayalakshmi Veerabathran,Anubhav Sinha,anubhav.sinha01@gmail.com,9876445678,"India ,India ,New Delhi - 110001 ,New Delhi ,india",DP
+1333379232867,2012-04-02T20:39:01+00:00,1.0,Dropout,nb,2748,1,283,Vijayalakshmi Veerabathran,Geoggy Augustin,geoggy_augustin@yahoo.com,0567522512,"al wahda , ,abudhabi - 54999 ,kerala ,india",DP

@@ -163,12 +163,11 @@ def process_data
 
   # Opening CSV if NORMAL Mode
   # Path for sending csv as attachement to mail
-  drop_file_path = ""
-  if ENV["MODE"] == "NORMAL"
-   drop_file_path = File.expand_path("../dropouts_csv_log/dropout_#{Time.now.strftime('%d%m%Y')}.csv", __FILE__)
+   drop_file_path = File.expand_path("../dropouts_csv_log/#{ENV["MODE"]}_#{Time.now.strftime('%d%m%Y')}.csv", __FILE__)
+
    output = CSV.open(drop_file_path,'w')
    output << ["Order ID","Order Date","Order Amount","Order Status","Payment Mode","Mil Tx ID","Order Desc","Borrower ID","Borrower Name","Customer Name","Customer Email","Customer Phone","Customer Address","Status Tag"]
-  end
+
   
   html_doc.xpath("//html/body/table/tr").each do |node|
    arr = []
@@ -204,9 +203,9 @@ def process_data
    # Checking for Dropouts
    if scrap.order_status == "Dropout"
     @dropcount = @dropcount + 1
-    if ENV["MODE"] == "NORMAL"
+    
      output << [scrap.order_id,scrap.order_date,scrap.order_amt,scrap.order_status,scrap.payment_mode,scrap.mil_tx_id,scrap.order_desc,scrap.borrower_id,scrap.borrower_name,scrap.cust_name,scrap.cust_email,scrap.cust_phone,scrap.cust_addr,scrap.tag] 
-    end
+    
    end
  
   @total = @total + 1
@@ -239,10 +238,7 @@ def process_data
    end
    # Sending dropout mail and updating the tag
    temp_scr = Scrap.find(scrap.order_id)
-   if ((temp_scr.order_status=="Dropout")&&(ENV["MODE"]=="DROPOUT")&&(temp_scr.drop_count==0))
-      UserMailer.dropout_mail(scrap,@from_date,@to_date,@total,@dropcount).deliver 
-      temp_scr.update_attributes(:drop_count=>1)
-   end
+   
   end
   # Save/Update Dates in Database
   RunDate.save_date(@from_date,@to_date)
@@ -253,6 +249,9 @@ def process_data
   output.close
   @logger.info("PARSE RESULT"){"Total Parsed :: #{@total}, Total Saved :: #{@count}, Failed :: #{@failed}"}
   @logger.info("Change Data RESULT"){"Change Db Entered/Altered :: #{@conflict}\n\n"}
+  if (ENV["MODE"] == "DROPOUT" && @dropcount > 0)
+   UserMailer.daily_mail(@from_date,@to_date,@dropcount,@conflict,drop_file_path).deliver
+  end
   UserMailer.send_mail(@from_date,@to_date,@total,@count,@failed,@conflict,@dropcount,@found,drop_file_path).deliver if ENV["MODE"]=="NORMAL"
  end
 end
