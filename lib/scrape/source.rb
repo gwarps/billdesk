@@ -166,7 +166,7 @@ def process_data
    drop_file_path = File.expand_path("../dropouts_csv_log/#{ENV["MODE"]}_#{Time.now.strftime('%d%m%Y')}.csv", __FILE__)
 
    output = CSV.open(drop_file_path,'w')
-   output << ["Order ID","Order Date","Order Amount","Order Status","Payment Mode","Mil Tx ID","Order Desc","Borrower ID","Borrower Name","Customer Name","Customer Email","Customer Phone","Customer Address","Status Tag"]
+   output << ["Order-ID","Order-Date","Order-Time","Order-Amount","Order-Status","Payment-Mode","Mil-Tx-ID","Order-Desc","Borrower-ID","Borrower-Name","Customer-Name","Customer-Email","Customer-Phone","Customer-Address","Status-Tag"]
 
   
   html_doc.xpath("//html/body/table/tr").each do |node|
@@ -203,8 +203,12 @@ def process_data
    # Checking for Dropouts
    if scrap.order_status == "Dropout"
     @dropcount = @dropcount + 1
-    
-     output << [scrap.order_id,scrap.order_date,scrap.order_amt,scrap.order_status,scrap.payment_mode,scrap.mil_tx_id,scrap.order_desc,scrap.borrower_id,scrap.borrower_name,scrap.cust_name,scrap.cust_email,scrap.cust_phone,scrap.cust_addr,scrap.tag] 
+
+   # Prepare date and time for CSV
+     csv_date = scrap.order_date.to_date
+     csv_time = scrap.order_date.strftime("%H:%M:%S")
+
+     output << [scrap.order_id,csv_date,csv_time,scrap.order_amt,scrap.order_status,scrap.payment_mode,scrap.mil_tx_id,scrap.order_desc,scrap.borrower_id,scrap.borrower_name,scrap.cust_name,scrap.cust_email,scrap.cust_phone,scrap.cust_addr,scrap.tag] 
     
    end
  

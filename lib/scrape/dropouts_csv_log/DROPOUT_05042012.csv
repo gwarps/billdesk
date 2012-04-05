@@ -1,0 +1,9 @@
+Order-ID,Order-Date,Order-Time,Order-Amount,Order-Status,Payment-Mode,Mil-Tx-ID,Order-Desc,Borrower-ID,Borrower-Name,Customer-Name,Customer-Email,Customer-Phone,Customer-Address,Status-Tag
+1324710685745,2011-12-24,00:11:57,50.0,Dropout,nb,asdf3434,testv.01,250,Milaap Loan,Test User,testuser@gmail.com,9234894534,"Ashok Towers ,Lower Parel ,Mumbai - 400011 ,Maharashtra ,India",NT
+1324735340406,2011-12-24,07:02:24,52.5,Dropout,nb,1733,1,273,Poulin Rose,Deepak Kannan,kannan.deepak@gmail.com,please fill phone,"please fill address , ,which city - zipcode ,state ,india",DP
+1324982321422,2011-12-27,03:39:45,50.0,Dropout,nb,asdf3434,testv.01,250,Milaap Loan,Test User,testuser@gmail.com,9234894534,"Ashok Towers ,Lower Parel ,Mumbai - 400011 ,Maharashtra ,India",NT
+1324983351433,2011-12-27,04:28:05,422.1,Dropout,nb,1742,1,280,Kavitta Domnic S,Anoj Viswanathan,anoj.viswanathan@gmail.com,please fill phone,"please fill address , ,which city - zipcode ,state ,india",DP
+1324985713174,2011-12-27,04:35:17,525.0,Dropout,nb,1744,1,280,Kavitta Domnic S,Deepak Kannan,kannan.deepak@gmail.com,please fill phone,"please fill address , ,which city - zipcode ,state ,india",DP
+1324992656947,2011-12-27,06:31:01,500.0,Dropout,nb,1748,1,280,Kavitta Domnic S,Deepak Kannan,kannan.deepak@gmail.com,please fill phone,"please fill address , ,which city - zipcode ,state ,india",DP
+1324997197161,2011-12-27,07:48:30,500.0,Dropout,nb,1751,1,266,Syed Sadique,Shub Sangameswaran,shub@milaap.org,please fill phone,"006, Pioneer Classic Apartments, Muniyappa Layout, Off Wind Tunnel Road ,Murgeshpalya ,Bangalore - 560017 ,Karnataka ,India",DP
+1325050825229,2011-12-27,22:40:38,1.0,Dropout,nb,1756,1,266,Syed Sadique,Prasath Venkatraman,ask4prasath@gmail.com,please fill phone,"please fill address , ,which city - zipcode ,state ,india",DP
